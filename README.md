@@ -1,18 +1,18 @@
 # Hello World Docker
-# Test app to showcase Docker bind mounts
+Test app to showcase Docker bind mounts. <i>Issue addressed - how to edit source code files in Docker.</i>
 
 ## Background
-[Docker](https://docs.docker.com/get-started/overview/) is an open platform for developing, shipping, and running applications. Docker enables separation of 'containerised' applications from local infrastructure.
+[Docker](https://docs.docker.com/get-started/overview/) is an open platform for developing, shipping, and running applications. Docker enables separation of 'containerised' applications from local computing infrastructure.
 
-Using docker locally means not having to have applications installed locally, but instead running in 'sealed' containers, discrete from the local computer. In a Use Case of developing code in Python for example, a docker container holding the latest version of Python, plus the Python script can be built and run.
+Using docker means not having to have applications installed locally, but instead running them in 'sealed' containers, held discrete from the local computer. In a Use Case of developing code in Python for example, a docker container holding the latest version of Python, plus the Python script can be built and run.
 
-However, to edit the Python script and rerun it, the image container needs to be rebuilt each time there are changes made. Docker has the ability to use bind mounts to circumvent this for development. The folder with the source code is 'mounted' into the container image, meaning that the code can be edited and then run immediately in the image without needing to be rebuilt.
+However, in this case, to edit the Python script and rerun it, the image container needs to be rebuilt each time there are changes made to the code. Docker has the ability to use bind mounts to circumvent this for development purposes. The folder holding the source code is 'mounted' into the container image, meaning that the code can then be edited and run immediately in the image without needing to be rebuilt.
 
 ## Developing without bind mounting
 In the first version, the code is implemented without bind mounting. Here the source code is <i>copied</i> into the container, and can be run. However, to edit the code to make any changes, the container will have to be rebuilt after each time edits are made.
 
 ### The Dockerfile
-The Dockerfile will be:
+The Dockerfile (as in git) will be:
 FROM = Use the image with the latest version of Python
 WORKDIR = create a working folder in the image '/app'
 COPY = copy the Python 'py' script files from the current folder into the working folder in the image.
@@ -34,8 +34,8 @@ docker build -t hello-world-docker .
 
 ### Run container
 To run the docker file:
--i = interactive
 -d = background
+-i = interactive
 
 ```
 docker run -di hello-world-docker
@@ -69,8 +69,8 @@ docker build -t hello-world-docker .
 
 ### Run container
 To run the docker file, to bind mount the development code instead of copying it:
--i = interactive
 -d = background
+-i = interactive
 -v = (from):(to)     - $(pwd) means the 'current folder'
 -w = working folder
 
@@ -79,7 +79,7 @@ docker run -di -v $(pwd):/app -w /app hello-world-docker
 ```
 
 ## Running the code
-The source code can be edited and then just re-run as above:
+The source code can be edited locally and then just re-run as above:
 
 ```
 python hello_world_docker.py
