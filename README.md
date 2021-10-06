@@ -8,8 +8,10 @@ Using docker means not having to have applications installed locally, but instea
 
 However, in this case, to edit the Python script and rerun it, the image container needs to be rebuilt each time there are changes made to the code. Docker has the ability to use bind mounts to circumvent this for development purposes. The folder holding the source code is 'mounted' into the container image, meaning that the code can then be edited and run immediately in the image without needing to be rebuilt.
 
+To run these examples, and assuming docker is installed on the local computer, download this repo and run the docker commands below from the command line when in this local folder. If Docker has not been used before, the initial build may take a while as the latest Python image is downloaded for the first time.
+
 ## Developing without bind mounting
-In the first version, the code is implemented without bind mounting. Here the source code is <i>copied</i> into the container, and can be run. However, to edit the code to make any changes, the container will have to be rebuilt after each time edits are made.
+In the first version, the code is implemented without bind mounting. Here the source code is <i>copied</i> into the container, and can be run from there. However, to then edit the code to make any changes, the container will have to be rebuilt again after each time edits are made. The workflow is edit the file and then rebuild and run the Python script in the container CLI as below.
 
 ### The Dockerfile
 The Dockerfile (as in git) will be:<br />
@@ -42,14 +44,14 @@ docker run -di hello-world-docker
 ```
 
 ## Running the code
-The source code cannot be edited - but the original version can be run:
+To run the source code file from within the container at the CLI (command line interface). Note the source code cannot be edited - but the original script version can be run as below:<br />
 
 ```
 python hello_world_docker.py
 ```
 
 ## Developing with bind mounting
-In the second version, the code is implemented with docker bind mounting. Here the source code is <i>referenced</i> within the container, and can be run. To edit the code to make any changes, the container will reference the edited file after the edits are made.
+In the second version, the code is implemented with docker bind mounting. Here the source code is held locally, but <i>referenced</i> within the container, and can be run. To edit the code to make any changes, the container will reference the edited file immediately as the edits are made. The image does not need to be rebuilt first. The workflow is just edit file and then in the container CLI run the python script as below.
 
 ### The Dockerfile
 The Dockerfile will be:
@@ -79,7 +81,7 @@ docker run -di -v $(pwd):/app -w /app hello-world-docker
 ```
 
 ## Running the code
-The source code can be edited locally and then just re-run as above:
+To run the source code file from within the container at the CLI (command line interface). The source code can be edited locally and then just re-run as below:
 
 ```
 python hello_world_docker.py
