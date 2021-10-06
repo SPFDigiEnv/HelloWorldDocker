@@ -12,9 +12,9 @@ However, in this case, to edit the Python script and rerun it, the image contain
 In the first version, the code is implemented without bind mounting. Here the source code is <i>copied</i> into the container, and can be run. However, to edit the code to make any changes, the container will have to be rebuilt after each time edits are made.
 
 ### The Dockerfile
-The Dockerfile (as in git) will be:
-FROM = Use the image with the latest version of Python
-WORKDIR = create a working folder in the image '/app'
+The Dockerfile (as in git) will be:<br />
+FROM = Use the image with the latest version of Python<br />
+WORKDIR = create a working folder in the image '/app'<br />
 COPY = copy the Python 'py' script files from the current folder into the working folder in the image.
 
 ```
@@ -24,8 +24,8 @@ COPY *.py ./
 ```
 
 ### Build container
-To construct the docker file:
--t = use nametag (here 'hello-world-docker')
+To construct the docker file:<br />
+-t = use nametag (here 'hello-world-docker')<br />
 '.' = with files in current folder
 
 ```
@@ -33,8 +33,8 @@ docker build -t hello-world-docker .
 ```
 
 ### Run container
-To run the docker file:
--d = background
+To run the docker file:<br />
+-d = background<br />
 -i = interactive
 
 ```
@@ -59,8 +59,8 @@ FROM python:latest
 ```
 
 ### Build container
-To construct the docker file:
--t = use nametag (here 'hello-world-docker')
+To construct the docker file:<br />
+-t = use nametag (here 'hello-world-docker')<br />
 '.' = with all the files in current folder
 
 ```
@@ -68,10 +68,10 @@ docker build -t hello-world-docker .
 ```
 
 ### Run container
-To run the docker file, to bind mount the development code instead of copying it:
--d = background
--i = interactive
--v = (from):(to)     - $(pwd) means the 'current folder'
+To run the docker file, to bind mount the development code instead of copying it:<br />
+-d = background<br />
+-i = interactive<br />
+-v = (from):(to)     - $(pwd) means the 'current folder'<br />
 -w = working folder
 
 ```
