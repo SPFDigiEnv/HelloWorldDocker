@@ -1,5 +1,5 @@
 # Hello World Docker
-Test app to showcase Docker bind mounts. <i>Issue addressed - how to edit source code files in Docker.</i>
+Test app to showcase Docker bind mounts at [runtime](https://docs.docker.com/engine/reference/commandline/run/). <i>Issue addressed - how to edit source code files in Docker.</i>
 
 ## Background
 [Docker](https://docs.docker.com/get-started/overview/) is an open platform for developing, shipping, and running applications. Docker enables separation of 'containerised' applications from local computing infrastructure.
