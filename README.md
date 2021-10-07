@@ -15,9 +15,9 @@ In the first version, the code is implemented without bind mounting. Here the so
 
 ### The Dockerfile
 The Dockerfile (as in git) will be:<br />
-FROM = Use the image with the latest version of Python<br />
-WORKDIR = create a working folder in the image '/app'<br />
-COPY = copy the Python 'py' script files from the current folder into the working folder in the image.
+`FROM` = Use the image with the latest version of Python<br />
+`WORKDIR` = create a working folder in the image '/app'<br />
+`COPY` = copy the Python 'py' script files from the current folder into the working folder in the image.
 
 ```
 FROM python:latest
@@ -27,8 +27,8 @@ COPY *.py ./
 
 ### Build container
 To construct the docker file:<br />
--t = use nametag (here 'hello-world-docker')<br />
-'.' = with files in current folder
+`-t` = use nametag (here 'hello-world-docker')<br />
+`.` = with files in current folder
 
 ```
 docker build -t hello-world-docker .
@@ -36,8 +36,8 @@ docker build -t hello-world-docker .
 
 ### Run container
 To run the docker file:<br />
--d = background<br />
--i = interactive
+`-d` = background<br />
+`-i` = interactive
 
 ```
 docker run -di hello-world-docker
@@ -62,8 +62,8 @@ FROM python:latest
 
 ### Build container
 To construct the docker file:<br />
--t = use nametag (here 'hello-world-docker')<br />
-'.' = with all the files in current folder
+`-t` = use nametag (here 'hello-world-docker')<br />
+`.` = with all the files in current folder
 
 ```
 docker build -t hello-world-docker .
@@ -71,10 +71,10 @@ docker build -t hello-world-docker .
 
 ### Run container
 To run the docker file, to bind mount the development code instead of copying it:<br />
--d = background<br />
--i = interactive<br />
--v = (from):(to)     - $(pwd) means the 'current folder'<br />
--w = working folder
+`-d` = background<br />
+`-i` = interactive<br />
+`-v` = (from):(to)     - $(pwd) means the 'current folder'<br />
+`-w` = working folder
 
 ```
 docker run -di -v $(pwd):/app -w /app hello-world-docker
