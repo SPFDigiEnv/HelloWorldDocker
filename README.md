@@ -11,7 +11,7 @@ However, in this case, to edit the Python script and rerun it, the image contain
 To run these examples, and assuming docker is installed on the local computer, download this repo and run the docker commands below from the command line when in this local folder. If Docker has not been used before, the initial build may take a while as the latest Python image is downloaded for the first time.
 
 ## Developing without bind mounting
-In the first version, the code is implemented without bind mounting. Here the source code is <i>copied</i> into the container, and can be run from there. However, to then edit the code to make any changes, the container will have to be rebuilt again after each time edits are made. The workflow is edit the file and then rebuild and run the Python script in the container CLI as below.
+In the first way, the code is implemented without bind mounting. Here the source code is <i>copied</i> into the container, and can be run from there. However, to then edit the code to make any changes, the container will have to be rebuilt again after each time edits are made. The workflow is edit the file and then rebuild and run the Python script in the container CLI as below.
 
 ### The Dockerfile
 The Dockerfile (as in git) will be:<br />
@@ -51,7 +51,7 @@ python hello_world_docker.py
 ```
 
 ## Developing with bind mounting
-In the second version, the code is implemented with docker bind mounting. Here the source code is held locally, but <i>referenced</i> within the container, and can be run. To edit the code to make any changes, the container will reference the edited file immediately as the edits are made. The image does not need to be rebuilt first. The workflow is just edit file and then in the container CLI run the python script as below.
+In the second way, the code is implemented with docker bind mounting. This is achieved with flags set in the `docker run` command. Here the source code is held locally, but <i>referenced</i> within the container, and can be run. To edit the code to make any changes, the container will reference the edited file immediately as the edits are made. The image does not need to be rebuilt first. The workflow is just edit file and then in the container CLI run the python script as below.
 
 ### The Dockerfile
 The Dockerfile will be:
