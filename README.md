@@ -86,3 +86,28 @@ To run the source code file from within the container at the CLI (command line i
 ```
 python hello_world_docker.py
 ```
+
+## Epilogue - using Docker Compose
+Docker compose helps simplify the process of running models (quite a simple one in this case - but still), see [Use Docker Compose](https://docs.docker.com/compose/reference/) and [Overview of Docker-Compose CLI](https://docs.docker.com/compose/reference/). To use docker-compose, you create a yaml model definition file, named `docker-compose.yml` with all the settings needed to run the model.
+
+In this case, in order to recreate the command:
+
+```
+docker run -di -v $(pwd):/app -w /app hello-world-docker
+```
+
+the docker-compose.yml file contains the following:
+
+```
+version: "3.7"
+services:
+  app:
+    stdin_open: true # equivalent to docker run -i
+    tty: true        # equivalent to docker run -t
+    image: hello-world-docker
+    working_dir: /app
+    volumes:
+      - ./:/app
+```
+
+then this can be run from the project folder with the command `docker-compoise up`, and stopped with `docker-compose down`. This approach is considered good practice because, as models get more complex so that complexity can be managed via the yml file - simplifying the running of the code.

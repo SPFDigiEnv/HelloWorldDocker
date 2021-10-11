@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  app:
+    stdin_open: true # equivalent to docker run -i
+    tty: true        # equivalent to docker run -t
+    image: hello-world-docker
+    working_dir: /app
+    volumes:
+      - ./:/app
